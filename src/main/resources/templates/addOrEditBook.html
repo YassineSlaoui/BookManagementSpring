@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Edit Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div th:switch="${book.id}" class="card-body">
+            <h2 th:case="null">Add New Book</h2>
+            <h2 th:case="*">Edit Book</h2>
+            <form action="#" th:action="@{/addBook}" th:object="${book}" method="post">
+                <div class="form-group col-md-8">
+                    <label for="name" class="col-form-label">Name</label>
+                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Book Name">
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label for="description" class="col-form-label">Description</label>
+                    <input type="text" th:field="*{description}" class="form-control" id="description"
+                           placeholder="Book Description">
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label for="price" class="col-form-label">Price</label>
+                    <input type="text" th:field="*{price}" class="form-control" id="price" placeholder="Book Price">
+                </div>
+
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-primary" value=" Submit "/>
+                </div>
+
+                <input type="hidden" id="id" th:field="*{id}">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
